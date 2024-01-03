@@ -11,6 +11,114 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  /* Options */
+  --color-neutral-0: #ffffff;
+  --color-neutral-10: #f2f2f8;
+  --color-neutral-20: #dcdae6;
+  --color-neutral-30: #d0cede;
+  --color-neutral-40: #c6c4d4;
+  --color-neutral-50: #a5a3b8;
+  --color-neutral-60: #48455f;
+  --color-neutral-70: #2d2b3b;
+  --color-neutral-80: #2d2b3b;
+  --color-neutral-90: #111019;
+
+  --color-blue-10: #dfdbfa;
+  --color-blue-40: #5038e6;
+  --color-blue-50: #361bd9;
+  --color-blue-60: #2d17b5;
+
+  --color-red-40: #e82d5a;
+  --color-red-50: #e82d5a;
+
+  --font-size-10: 10px;
+  --font-size-12: 12px;
+  --font-size-14: 14px;
+  --font-size-16: 16px;
+  --font-size-18: 18px;
+  --font-size-24: 24px;
+  --font-size-32: 32px;
+  --font-size-64: 64px;
+
+  --font-weight-thin: 100;
+  --font-weight-light: 200;
+  --font-weight-normal: 300;
+  --font-weight-medium: 400;
+  --font-weight-semibold: 500;
+  --font-weight-bold: 600;
+  --font-weight-heavy: 700;
+
+  --line-height-14: 14px;
+  --line-height-16: 16px;
+  --line-height-20: 20px;
+  --line-height-24: 24px;
+  --line-height-32: 32px;
+  --line-height-40: 40px;
+  --line-height-80: 80px;
+
+  /* Decisions */
+  --font-display-size-large: var(--font-size-64);
+  --font-display-size-medium: var(--font-size-32);
+  --font-display-size-small: var(--font-size-24);
+
+  --font-title-size-large: var(--font-size-18);
+  --font-title-size-medium: var(--font-size-16);
+  --font-title-size-small: var(--font-size-14);
+  --font-title-size-caption: var(--font-size-10);
+
+  --font-ui-size-medium-regular: var(--font-size-14);
+  --font-ui-size-medium-bold: var(--font-size-14);
+  --font-ui-size-small-regular: var(--font-size-12);
+  --font-ui-size-small-bold: var(--font-size-12);
+
+  --font-paragraph-size-medium-regular: var(--font-size-14);
+  --font-paragraph-size-medium-bold: var(--font-size-14);
+  --font-paragraph-size-small-regular: var(--font-size-12);
+  --font-paragraph-size-small-bold: var(--font-size-12);
+
+  --font-color-accent-light: var(--color-blue-50);
+  --font-color-primary-light: var(--color-neutral-90);
+  --font-color-secondary-light: var(--color-neutral-60);
+  --font-color-inverse-light: var(--color-neutral-0);
+  --font-color-disabled-light: var(--color-neutral-50);
+  --font-color-error-light: var(--color-red-50);
+
+  --font-color-accent-dark: var(--color-blue-40);
+  --font-color-primary-dark: var(--color-neutral-0);
+  --font-color-secondary-dark: var(--color-neutral-40);
+  --font-color-inverse-dark: var(--color-neutral-0);
+  --font-color-disabled-dark: var(--color-neutral-60);
+  --font-color-error-dark: var(--color-red-40);
+
+  --border-color-app-light: var(--color-neutral-20);
+  --border-color-accent-light: var(--color-blue-40);
+  --border-color-neutral-light: var(--color-neutral-30);
+  --border-color-error-light: var(--color-red-50);
+
+  --border-color-app-dark: var(--color-neutral-70);
+  --border-color-accent-dark: var(--color-blue-40);
+  --border-color-neutral-dark: var(--color-neutral-60);
+  --border-color-error-dark: var(--color-red-40);
+
+  --background-color-app-light: var(--color-neutral-10);
+  --background-color-app-dark: var(--color-neutral-90);
+
+  --background-color-accent-light-default: var(--color-blue-50);
+  --background-color-accent-light-hover: var(--color-blue-40);
+  --background-color-accent-light-active: var(--color-blue-60);
+
+  --background-color-accent-dark-default: var(--color-blue-50);
+  --background-color-accent-dark-hover: var(--color-blue-40);
+  --background-color-accent-dark-active: var(--color-blue-60);
+
+  --background-color-neutral-light-default: var(--color-neutral-0);
+  --background-color-neutral-light-hover: var(--color-neutral-10);
+  --background-color-neutral-light-active: var(--color-neutral-20);
+
+  --background-color-neutral-dark-default: var(--color-neutral-80);
+  --background-color-neutral-dark-hover: var(--color-neutral-80);
+  --background-color-neutral-dark-active: var(--color-neutral-70);
 }
 
 a {
