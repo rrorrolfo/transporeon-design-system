@@ -84,3 +84,20 @@ export const Tertiary: Story = {
     await expect(buttonElement.getAttribute("class")).toMatch(/tertiary/gi);
   },
 };
+
+export const Disabled: Story = {
+  args: {
+    disabled: true,
+    children: "Disabled button",
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    const buttonElement = canvas.getByRole("button", {
+      name: "primary-button",
+    });
+
+    await expect(buttonElement).toBeInTheDocument();
+    await expect(buttonElement).toBeDisabled();
+  },
+};
