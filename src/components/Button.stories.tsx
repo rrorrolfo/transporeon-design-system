@@ -121,3 +121,19 @@ export const WithIconStart: Story = {
     await expect(startIcon).toBeInTheDocument();
   },
 };
+
+export const WithIconEnd: Story = {
+  args: {
+    iconEnd: createElement(() => {
+      return <DoneIcon />;
+    }),
+    children: "With icon end",
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    const endIcon = canvas.getByTestId("button-icon-end");
+
+    await expect(endIcon).toBeInTheDocument();
+  },
+};
