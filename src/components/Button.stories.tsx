@@ -1,6 +1,6 @@
 import { createElement } from "react";
 
-import { DoneIcon } from "../assets";
+import { DoneIcon, ChevronDownIcon } from "../assets";
 
 import type { Meta, StoryObj } from "@storybook/react";
 
@@ -148,6 +148,60 @@ export const HiddenLabel: Story = {
 
     const buttonLabel = canvas.queryByTestId("button-label");
 
+    await expect(buttonLabel).not.toBeInTheDocument();
+  },
+};
+
+export const IconStartAndHiddenLabel: Story = {
+  args: {
+    children: "Button with icon",
+    iconStart: <DoneIcon />,
+    showLabel: false,
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    const startIcon = canvas.getByTestId("button-icon-start");
+    const buttonLabel = canvas.queryByTestId("button-label");
+
+    await expect(startIcon).toBeInTheDocument();
+    await expect(buttonLabel).not.toBeInTheDocument();
+  },
+};
+
+export const IconEndAndHiddenLabel: Story = {
+  args: {
+    children: "Button with icon",
+    iconEnd: <DoneIcon />,
+    showLabel: false,
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    const endIcon = canvas.getByTestId("button-icon-end");
+    const buttonLabel = canvas.queryByTestId("button-label");
+
+    await expect(endIcon).toBeInTheDocument();
+    await expect(buttonLabel).not.toBeInTheDocument();
+  },
+};
+
+export const IconStartAndIconEndAndHiddenLabel: Story = {
+  args: {
+    children: "Button with icon",
+    iconStart: <DoneIcon />,
+    iconEnd: <ChevronDownIcon />,
+    showLabel: false,
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    const startIcon = canvas.getByTestId("button-icon-start");
+    const endIcon = canvas.getByTestId("button-icon-end");
+    const buttonLabel = canvas.queryByTestId("button-label");
+
+    await expect(startIcon).toBeInTheDocument();
+    await expect(endIcon).toBeInTheDocument();
     await expect(buttonLabel).not.toBeInTheDocument();
   },
 };
