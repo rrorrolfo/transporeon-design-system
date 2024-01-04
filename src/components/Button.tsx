@@ -5,12 +5,14 @@ interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   children?: React.ReactNode;
   priorityStyle?: PriorityStyles;
   type?: ButtonTypes;
+  disabled?: boolean;
 }
 
 const Button = ({
   children = "Button",
   priorityStyle = "secondary",
   type = "button",
+  disabled = false,
   ...props
 }: ButtonProps) => {
   const className = `button ${priorityStyle}`;
@@ -20,7 +22,7 @@ const Button = ({
       type={type}
       aria-label="primary-button"
       className={className}
-      style={{ display: "flex" }}
+      disabled={disabled}
       {...props}
     >
       {children}
