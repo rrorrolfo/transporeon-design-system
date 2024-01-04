@@ -108,7 +108,6 @@ export const Disabled: Story = {
 
 export const WithIconStart: Story = {
   args: {
-    disabled: true,
     iconStart: createElement(() => {
       return <DoneIcon />;
     }),
@@ -117,8 +116,8 @@ export const WithIconStart: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
 
-    const buttonElement = canvas.getByTestId("button-icon-start");
+    const startIcon = canvas.getByTestId("button-icon-start");
 
-    await expect(buttonElement).toBeInTheDocument();
+    await expect(startIcon).toBeInTheDocument();
   },
 };
