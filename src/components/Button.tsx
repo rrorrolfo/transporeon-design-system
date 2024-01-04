@@ -6,6 +6,7 @@ interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   priorityStyle?: PriorityStyles;
   type?: ButtonTypes;
   disabled?: boolean;
+  iconStart?: React.ReactElement;
 }
 
 const Button = ({
@@ -13,6 +14,7 @@ const Button = ({
   priorityStyle = "secondary",
   type = "button",
   disabled = false,
+  iconStart,
   ...props
 }: ButtonProps) => {
   const className = `button ${priorityStyle}`;
@@ -25,6 +27,7 @@ const Button = ({
       disabled={disabled}
       {...props}
     >
+      {iconStart && <span data-testid="button-icon-start">{iconStart}</span>}
       {children}
     </button>
   );
