@@ -40,3 +40,35 @@ export const Checked: Story = {
     await expect(checkbox).toBeChecked();
   },
 };
+
+export const UncheckdAndDisabled: Story = {
+  args: {
+    checked: false,
+    disabled: true,
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    const checkbox = canvas.getByRole("checkbox", { name: /checkbox/i });
+    await expect(checkbox).toBeInTheDocument();
+
+    await expect(checkbox).toBeDisabled();
+    await expect(checkbox).not.toBeChecked();
+  },
+};
+
+export const CheckdAndDisabled: Story = {
+  args: {
+    checked: true,
+    disabled: true,
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    const checkbox = canvas.getByRole("checkbox", { name: /checkbox/i });
+    await expect(checkbox).toBeInTheDocument();
+
+    await expect(checkbox).toBeDisabled();
+    await expect(checkbox).toBeChecked();
+  },
+};
