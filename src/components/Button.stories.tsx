@@ -1,3 +1,7 @@
+import { createElement } from "react";
+
+import { DoneIcon } from "../assets";
+
 import type { Meta, StoryObj } from "@storybook/react";
 
 import { within, userEvent } from "@storybook/testing-library";
@@ -99,5 +103,22 @@ export const Disabled: Story = {
 
     await expect(buttonElement).toBeInTheDocument();
     await expect(buttonElement).toBeDisabled();
+  },
+};
+
+export const WithIconStart: Story = {
+  args: {
+    disabled: true,
+    iconStart: createElement(() => {
+      return <DoneIcon />;
+    }),
+    children: "With icon start",
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    const buttonElement = canvas.getByTestId("button-icon-start");
+
+    await expect(buttonElement).toBeInTheDocument();
   },
 };
