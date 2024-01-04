@@ -44,7 +44,43 @@ export const Primary: Story = {
     });
 
     await expect(buttonElement).toBeInTheDocument();
-    // Component has primary class
+    // Component should have primary class
     await expect(buttonElement.getAttribute("class")).toMatch(/primary/gi);
+  },
+};
+
+export const Secondary: Story = {
+  args: {
+    priorityStyle: "secondary",
+    children: "Secondary button",
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    const buttonElement = canvas.getByRole("button", {
+      name: "primary-button",
+    });
+
+    await expect(buttonElement).toBeInTheDocument();
+    // Component should have primary class
+    await expect(buttonElement.getAttribute("class")).toMatch(/secondary/gi);
+  },
+};
+
+export const Tertiary: Story = {
+  args: {
+    priorityStyle: "tertiary",
+    children: "Tertiary button",
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    const buttonElement = canvas.getByRole("button", {
+      name: "primary-button",
+    });
+
+    await expect(buttonElement).toBeInTheDocument();
+    // Component should have tertiary class
+    await expect(buttonElement.getAttribute("class")).toMatch(/tertiary/gi);
   },
 };
