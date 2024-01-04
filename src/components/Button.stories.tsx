@@ -137,3 +137,17 @@ export const WithIconEnd: Story = {
     await expect(endIcon).toBeInTheDocument();
   },
 };
+
+export const HiddenLabel: Story = {
+  args: {
+    children: "Hidden label",
+    showLabel: false,
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    const buttonLabel = canvas.queryByTestId("button-label");
+
+    await expect(buttonLabel).not.toBeInTheDocument();
+  },
+};
