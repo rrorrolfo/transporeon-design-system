@@ -41,7 +41,7 @@ export const Checked: Story = {
   },
 };
 
-export const UncheckdAndDisabled: Story = {
+export const UncheckedAndDisabled: Story = {
   args: {
     checked: false,
     disabled: true,
@@ -57,7 +57,7 @@ export const UncheckdAndDisabled: Story = {
   },
 };
 
-export const CheckdAndDisabled: Story = {
+export const CheckedAndDisabled: Story = {
   args: {
     checked: true,
     disabled: true,
