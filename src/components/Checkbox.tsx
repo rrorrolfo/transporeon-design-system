@@ -3,11 +3,13 @@ import { useState } from "react";
 interface CheckboxProps extends React.HTMLAttributes<HTMLInputElement> {
   disabled?: boolean;
   checked?: boolean;
+  helperMessage?: string;
 }
 
 const Checkbox = ({
   disabled = false,
   checked = false,
+  helperMessage = "",
   ...props
 }: CheckboxProps) => {
   const [isChecked, toggleIsChecked] = useState(checked);
@@ -16,7 +18,11 @@ const Checkbox = ({
 
   return (
     <div>
-      <label htmlFor="checkbox" onClick={handleClick}>
+      <label
+        htmlFor="checkbox"
+        onClick={handleClick}
+        data-testid="checkbox-label"
+      >
         <input
           type="checkbox"
           name="checkbox"
@@ -28,6 +34,9 @@ const Checkbox = ({
         />
         Checkbox
       </label>
+      {helperMessage && (
+        <span data-testid="helper-message">{helperMessage}</span>
+      )}
     </div>
   );
 };
