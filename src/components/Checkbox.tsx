@@ -12,22 +12,22 @@ const Checkbox = ({
 }: CheckboxProps) => {
   const [isChecked, toggleIsChecked] = useState(checked);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) =>
-    toggleIsChecked(e.target.checked);
+  const handleClick = () => toggleIsChecked((isChecked) => !isChecked);
 
   return (
     <div>
-      <input
-        type="checkbox"
-        name="checkbox"
-        role="checkbox"
-        aria-label="checkbox"
-        disabled={disabled}
-        checked={isChecked}
-        onChange={handleChange}
-        {...props}
-      />
-      <label htmlFor="checkbox">Checkbox</label>
+      <label htmlFor="checkbox" onClick={handleClick}>
+        <input
+          type="checkbox"
+          name="checkbox"
+          role="checkbox"
+          aria-label="checkbox"
+          disabled={disabled}
+          checked={isChecked}
+          {...props}
+        />
+        Checkbox
+      </label>
     </div>
   );
 };
