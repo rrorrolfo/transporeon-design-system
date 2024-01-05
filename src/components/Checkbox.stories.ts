@@ -15,8 +15,14 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+const defaultArgs = {
+  disabled: false,
+  checked: false,
+  helperMessage: "Contextual help message",
+};
+
 export const Base: Story = {
-  args: { disabled: false, checked: false },
+  args: defaultArgs,
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
 
@@ -40,11 +46,7 @@ export const Base: Story = {
 };
 
 export const WithHelpMessage: Story = {
-  args: {
-    checked: false,
-    disabled: false,
-    helperMessage: "Contextual help message",
-  },
+  args: defaultArgs,
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
 
@@ -61,8 +63,7 @@ export const WithHelpMessage: Story = {
 
 export const WithoutHelpMessage: Story = {
   args: {
-    checked: false,
-    disabled: false,
+    ...defaultArgs,
     helperMessage: "",
   },
   play: async ({ canvasElement }) => {
@@ -79,7 +80,7 @@ export const WithoutHelpMessage: Story = {
 };
 
 export const Unchecked: Story = {
-  args: { checked: false, disabled: false },
+  args: defaultArgs,
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
 
@@ -94,7 +95,7 @@ export const Unchecked: Story = {
 };
 
 export const Checked: Story = {
-  args: { checked: true, disabled: false },
+  args: { ...defaultArgs, checked: true },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
 
@@ -110,7 +111,7 @@ export const Checked: Story = {
 
 export const UncheckedAndDisabled: Story = {
   args: {
-    checked: false,
+    ...defaultArgs,
     disabled: true,
   },
   play: async ({ canvasElement }) => {
@@ -128,6 +129,7 @@ export const UncheckedAndDisabled: Story = {
 
 export const CheckedAndDisabled: Story = {
   args: {
+    ...defaultArgs,
     checked: true,
     disabled: true,
   },
