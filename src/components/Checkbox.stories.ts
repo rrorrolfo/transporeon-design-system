@@ -19,6 +19,7 @@ const defaultArgs = {
   disabled: false,
   checked: false,
   helperMessage: "Contextual help message",
+  labelText: "Checkbox",
 };
 
 export const Base: Story = {
@@ -42,6 +43,32 @@ export const Base: Story = {
     // Uncheck the checkbox
     await fireEvent.click(checkbox);
     await expect(checkbox).not.toBeChecked();
+  },
+};
+
+export const WithLabelText: Story = {
+  args: defaultArgs,
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    const checkbox = canvas.getByRole("checkbox", { name: /checkbox/i });
+    const label = canvas.getByTestId("checkbox-label");
+    await expect(checkbox).toBeInTheDocument();
+    await expect(label).toBeInTheDocument();
+    await expect(label).toHaveTextContent("Checkbox");
+  },
+};
+
+export const WithoutLabelText: Story = {
+  args: { ...defaultArgs, labelText: "" },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    const checkbox = canvas.getByRole("checkbox", { name: /checkbox/i });
+    const label = canvas.getByTestId("checkbox-label");
+    await expect(checkbox).toBeInTheDocument();
+    await expect(label).toBeInTheDocument();
+    await expect(label).toHaveTextContent("");
   },
 };
 
