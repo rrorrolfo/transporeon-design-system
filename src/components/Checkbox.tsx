@@ -28,6 +28,7 @@ const Checkbox = ({
           name="checkbox"
           role="checkbox"
           aria-label="checkbox"
+          aria-checked={`${isChecked}`}
           disabled={disabled}
           checked={isChecked}
           {...props}
