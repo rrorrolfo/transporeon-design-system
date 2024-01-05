@@ -21,7 +21,9 @@ export const Base: Story = {
     const canvas = within(canvasElement);
 
     const checkbox = canvas.getByRole("checkbox", { name: /checkbox/i });
+    const label = canvas.getByTestId("checkbox-label");
     await expect(checkbox).toBeInTheDocument();
+    await expect(label).toBeInTheDocument();
 
     //default state
     await expect(checkbox).toBeEnabled();
@@ -43,7 +45,9 @@ export const Unchecked: Story = {
     const canvas = within(canvasElement);
 
     const checkbox = canvas.getByRole("checkbox", { name: /checkbox/i });
+    const label = canvas.getByTestId("checkbox-label");
     await expect(checkbox).toBeInTheDocument();
+    await expect(label).toBeInTheDocument();
 
     await expect(checkbox).toBeEnabled();
     await expect(checkbox).not.toBeChecked();
@@ -56,7 +60,9 @@ export const Checked: Story = {
     const canvas = within(canvasElement);
 
     const checkbox = canvas.getByRole("checkbox", { name: /checkbox/i });
+    const label = canvas.getByTestId("checkbox-label");
     await expect(checkbox).toBeInTheDocument();
+    await expect(label).toBeInTheDocument();
 
     await expect(checkbox).toBeEnabled();
     await expect(checkbox).toBeChecked();
@@ -72,7 +78,9 @@ export const UncheckedAndDisabled: Story = {
     const canvas = within(canvasElement);
 
     const checkbox = canvas.getByRole("checkbox", { name: /checkbox/i });
+    const label = canvas.getByTestId("checkbox-label");
     await expect(checkbox).toBeInTheDocument();
+    await expect(label).toBeInTheDocument();
 
     await expect(checkbox).toBeDisabled();
     await expect(checkbox).not.toBeChecked();
@@ -88,7 +96,9 @@ export const CheckedAndDisabled: Story = {
     const canvas = within(canvasElement);
 
     const checkbox = canvas.getByRole("checkbox", { name: /checkbox/i });
+    const label = canvas.getByTestId("checkbox-label");
     await expect(checkbox).toBeInTheDocument();
+    await expect(label).toBeInTheDocument();
 
     await expect(checkbox).toBeDisabled();
     await expect(checkbox).toBeChecked();
