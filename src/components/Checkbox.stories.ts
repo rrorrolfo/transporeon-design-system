@@ -4,7 +4,7 @@ import { expect } from "@storybook/jest";
 import Checkbox from "./Checkbox";
 
 const meta = {
-  title: "Example/Checkbox",
+  title: "Checkbox",
   component: Checkbox,
   parameters: {
     layout: "centered",
@@ -16,7 +16,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Base: Story = {
-  args: {},
+  args: { disabled: false, checked: false },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
 
@@ -38,7 +38,7 @@ export const Base: Story = {
 };
 
 export const Unchecked: Story = {
-  args: { checked: false },
+  args: { checked: false, disabled: false },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
 
@@ -51,7 +51,7 @@ export const Unchecked: Story = {
 };
 
 export const Checked: Story = {
-  args: { checked: true },
+  args: { checked: true, disabled: false },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
 
