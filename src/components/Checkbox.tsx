@@ -36,10 +36,10 @@ const Checkbox = ({
           {...props}
         />
         {labelText}
+        {helperMessage && (
+          <span data-testid="helper-message">{helperMessage}</span>
+        )}
       </label>
-      {helperMessage && (
-        <span data-testid="helper-message">{helperMessage}</span>
-      )}
     </div>
   );
 };
