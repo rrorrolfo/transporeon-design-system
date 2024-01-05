@@ -39,6 +39,45 @@ export const Base: Story = {
   },
 };
 
+export const WithHelpMessage: Story = {
+  args: {
+    checked: false,
+    disabled: false,
+    helperMessage: "Contextual help message",
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    const checkbox = canvas.getByRole("checkbox", { name: /checkbox/i });
+    const label = canvas.getByTestId("checkbox-label");
+    const helperMessage = canvas.getByTestId("helper-message");
+    await expect(checkbox).toBeInTheDocument();
+    await expect(label).toBeInTheDocument();
+
+    await expect(helperMessage).toBeInTheDocument();
+    await expect(helperMessage).toHaveTextContent("Contextual help message");
+  },
+};
+
+export const WithoutHelpMessage: Story = {
+  args: {
+    checked: false,
+    disabled: false,
+    helperMessage: "",
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    const checkbox = canvas.getByRole("checkbox", { name: /checkbox/i });
+    const label = canvas.getByTestId("checkbox-label");
+    const helperMessage = canvas.queryByTestId("helper-message");
+
+    await expect(checkbox).toBeInTheDocument();
+    await expect(label).toBeInTheDocument();
+    await expect(helperMessage).not.toBeInTheDocument();
+  },
+};
+
 export const Unchecked: Story = {
   args: { checked: false, disabled: false },
   play: async ({ canvasElement }) => {
