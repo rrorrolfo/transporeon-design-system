@@ -65,10 +65,9 @@ export const WithoutLabelText: Story = {
     const canvas = within(canvasElement);
 
     const checkbox = canvas.getByRole("checkbox", { name: /checkbox/i });
-    const label = canvas.getByTestId("checkbox-label");
+    const label = canvas.queryByTestId("label-text");
     await expect(checkbox).toBeInTheDocument();
-    await expect(label).toBeInTheDocument();
-    await expect(label).toHaveTextContent("");
+    await expect(label).not.toBeInTheDocument();
   },
 };
 
