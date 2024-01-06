@@ -5,6 +5,7 @@ interface CheckboxProps extends React.HTMLAttributes<HTMLInputElement> {
   checked?: boolean;
   helperMessage?: string;
   labelText?: string;
+  id: string | undefined;
 }
 
 const Checkbox = ({
@@ -12,6 +13,7 @@ const Checkbox = ({
   checked = false,
   helperMessage = "",
   labelText = "",
+  id,
   ...props
 }: CheckboxProps) => {
   const [isChecked, toggleIsChecked] = useState(checked);
@@ -21,12 +23,12 @@ const Checkbox = ({
 
   return (
     <div>
-      <label htmlFor="mycheckbox" data-testid="checkbox-label">
+      <label htmlFor={id} data-testid="checkbox-label">
         <input
           type="checkbox"
           name="checkbox"
           role="checkbox"
-          id="mycheckbox"
+          id={id}
           aria-label="checkbox"
           aria-checked={`${isChecked}`}
           disabled={disabled}
