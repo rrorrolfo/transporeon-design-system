@@ -20,17 +20,20 @@ const defaultArgs = {
   checked: false,
   helperMessage: "Contextual help message",
   labelText: "Checkbox",
+  id: "myCheckbox",
 };
 
 export const Base: Story = {
-  args: defaultArgs,
+  args: { ...defaultArgs, id: "testID" },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
 
     const checkbox = canvas.getByRole("checkbox", { name: /checkbox/i });
     const label = canvas.getByTestId("checkbox-label");
+
     await expect(checkbox).toBeInTheDocument();
     await expect(label).toBeInTheDocument();
+    await expect(checkbox.getAttribute("id")).toMatch("testID");
 
     //default state
     await expect(checkbox).toBeEnabled();
