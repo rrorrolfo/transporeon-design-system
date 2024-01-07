@@ -53,12 +53,13 @@ export const WithLabelText: Story = {
   args: defaultArgs,
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
+    const { labelText } = defaultArgs;
 
     const checkbox = canvas.getByRole("checkbox", { name: /checkbox/i });
     const label = canvas.getByTestId("checkbox-label");
     await expect(checkbox).toBeInTheDocument();
     await expect(label).toBeInTheDocument();
-    await expect(label).toHaveTextContent("Checkbox");
+    await expect(label).toHaveTextContent(labelText);
   },
 };
 
@@ -66,15 +67,16 @@ export const WithHelpMessage: Story = {
   args: defaultArgs,
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
+    const { helperMessage } = defaultArgs;
 
     const checkbox = canvas.getByRole("checkbox", { name: /checkbox/i });
     const label = canvas.getByTestId("checkbox-label");
-    const helperMessage = canvas.getByTestId("helper-message");
+    const helperMessageElement = canvas.getByTestId("helper-message");
     await expect(checkbox).toBeInTheDocument();
     await expect(label).toBeInTheDocument();
 
-    await expect(helperMessage).toBeInTheDocument();
-    await expect(helperMessage).toHaveTextContent("Contextual help message");
+    await expect(helperMessageElement).toBeInTheDocument();
+    await expect(helperMessageElement).toHaveTextContent(helperMessage);
   },
 };
 
