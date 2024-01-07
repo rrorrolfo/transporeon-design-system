@@ -20,6 +20,8 @@ const defaultArgs: CheckboxGroupProps = {
   title: "Group title",
   infoText: "Information text",
   disableAll: false,
+  hasError: false,
+  errorMessage: "",
   checkboxes: [
     {
       id: "1",
@@ -36,7 +38,7 @@ const defaultArgs: CheckboxGroupProps = {
   ],
 };
 
-export const Base: Story = {
+export const Default: Story = {
   args: defaultArgs,
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
@@ -84,5 +86,20 @@ export const AllDisabled: Story = {
     checkboxesArray.forEach(async (element) => {
       await expect(element).toBeDisabled();
     });
+  },
+};
+
+export const Invalid: Story = {
+  args: { ...defaultArgs, hasError: true, errorMessage: "Group error text" },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const { checkboxes } = defaultArgs;
+
+    const checkboxesArray = canvas.getAllByRole("checkbox");
+    const errorMessage = canvas.getByTestId("error-message");
+
+    await expect(checkboxesArray.length).toBe(checkboxes.length);
+    await expect(errorMessage).toBeInTheDocument();
+    await expect(errorMessage).toHaveTextContent("Group error text");
   },
 };
