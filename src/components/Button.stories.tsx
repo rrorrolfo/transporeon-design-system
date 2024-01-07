@@ -4,12 +4,12 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { within } from "@storybook/testing-library";
 import { expect } from "@storybook/jest";
 
-import Button from "./Button";
+import Button, { ButtonProps } from "./Button";
 
 import { DoneIcon, ChevronDownIcon } from "../assets";
 
 const meta = {
-  title: "Example/Button",
+  title: "Button",
   component: Button,
   parameters: {
     layout: "centered",
@@ -20,8 +20,17 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+const defaultArgs: ButtonProps = {
+  children: "Button",
+  priorityStyle: "secondary",
+  type: "button",
+  disabled: false,
+  showLabel: true,
+  onClick: () => {},
+};
+
 export const Base: Story = {
-  args: {},
+  args: defaultArgs,
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
 
@@ -35,6 +44,7 @@ export const Base: Story = {
 
 export const Primary: Story = {
   args: {
+    ...defaultArgs,
     priorityStyle: "primary",
     children: "Primary button",
   },
@@ -53,6 +63,7 @@ export const Primary: Story = {
 
 export const Secondary: Story = {
   args: {
+    ...defaultArgs,
     priorityStyle: "secondary",
     children: "Secondary button",
   },
@@ -71,6 +82,7 @@ export const Secondary: Story = {
 
 export const Tertiary: Story = {
   args: {
+    ...defaultArgs,
     priorityStyle: "tertiary",
     children: "Tertiary button",
   },
@@ -89,6 +101,7 @@ export const Tertiary: Story = {
 
 export const Disabled: Story = {
   args: {
+    ...defaultArgs,
     disabled: true,
     children: "Disabled button",
   },
@@ -106,6 +119,7 @@ export const Disabled: Story = {
 
 export const WithIconStart: Story = {
   args: {
+    ...defaultArgs,
     iconStart: createElement(() => {
       return <DoneIcon />;
     }),
@@ -122,6 +136,7 @@ export const WithIconStart: Story = {
 
 export const WithIconEnd: Story = {
   args: {
+    ...defaultArgs,
     iconEnd: createElement(() => {
       return <DoneIcon />;
     }),
@@ -138,6 +153,7 @@ export const WithIconEnd: Story = {
 
 export const HiddenLabel: Story = {
   args: {
+    ...defaultArgs,
     children: "Hidden label",
     showLabel: false,
   },
@@ -152,6 +168,7 @@ export const HiddenLabel: Story = {
 
 export const IconStartAndHiddenLabel: Story = {
   args: {
+    ...defaultArgs,
     children: "Button with icon",
     iconStart: <DoneIcon />,
     showLabel: false,
@@ -169,6 +186,7 @@ export const IconStartAndHiddenLabel: Story = {
 
 export const IconEndAndHiddenLabel: Story = {
   args: {
+    ...defaultArgs,
     children: "Button with icon",
     iconEnd: <DoneIcon />,
     showLabel: false,
@@ -186,6 +204,7 @@ export const IconEndAndHiddenLabel: Story = {
 
 export const IconStartAndIconEndAndHiddenLabel: Story = {
   args: {
+    ...defaultArgs,
     children: "Button with icon",
     iconStart: <DoneIcon />,
     iconEnd: <ChevronDownIcon />,
