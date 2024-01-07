@@ -71,3 +71,17 @@ export const WithHelpMessage: Story = {
     await expect(messageElement).toBeInTheDocument();
   },
 };
+
+export const InputOnly: Story = {
+  args: { ...defaultArgs, hideLabel: true },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const { id, labelText } = defaultArgs;
+
+    const inputElement = canvas.getByTestId(id);
+    const labelElement = canvas.queryByLabelText(labelText as string);
+
+    await expect(inputElement).toBeInTheDocument();
+    await expect(labelElement).not.toBeInTheDocument();
+  },
+};
