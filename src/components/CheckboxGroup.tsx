@@ -3,23 +3,24 @@ import { useState } from "react";
 import Checkbox from "./Checkbox";
 
 type CheckboxType = {
-  disabled: boolean;
   checked: boolean;
   helperMessage?: string;
   labelText?: string;
   id: string | undefined;
 };
 
-type CheckboxGroupProps = {
+export type CheckboxGroupProps = {
   title?: string;
   infoText?: string;
   checkboxes: CheckboxType[];
+  disableAll: boolean;
 };
 
 const CheckboxGroup = ({
   title = "",
   infoText = "",
   checkboxes = [],
+  disableAll,
 }: CheckboxGroupProps) => {
   const [checkboxState, setCheckboxState] = useState(checkboxes);
 
@@ -49,6 +50,7 @@ const CheckboxGroup = ({
           <Checkbox
             key={props.id}
             onChangeCallback={updateCheckboxesState}
+            disabled={disableAll}
             {...props}
           />
         ))}
