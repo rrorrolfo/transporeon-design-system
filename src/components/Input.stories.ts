@@ -20,6 +20,8 @@ const defaultArgs: InputProps = {
   id: "myInput",
   hideLabel: false,
   labelText: "Input",
+  showHelpMessage: false,
+  helpMessage: "Helpful text for further explaining the Label",
 };
 
 export const Default: Story = {
@@ -51,5 +53,21 @@ export const LabelHidden: Story = {
 
     await expect(inputElement).toBeInTheDocument();
     await expect(labelElement).not.toBeInTheDocument();
+  },
+};
+
+export const WithHelpMessage: Story = {
+  args: { ...defaultArgs, showHelpMessage: true },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const { id, labelText, helpMessage } = defaultArgs;
+
+    const inputElement = canvas.getByTestId(id);
+    const labelElement = canvas.queryByLabelText(labelText as string);
+    const messageElement = canvas.getByText(helpMessage as string);
+
+    await expect(inputElement).toBeInTheDocument();
+    await expect(labelElement).toBeInTheDocument();
+    await expect(messageElement).toBeInTheDocument();
   },
 };
