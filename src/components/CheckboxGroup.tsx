@@ -2,6 +2,8 @@ import { useState } from "react";
 
 import Checkbox from "./Checkbox";
 
+import { CloseIcon } from "../assets";
+
 type CheckboxType = {
   checked: boolean;
   helperMessage?: string;
@@ -13,14 +15,18 @@ export type CheckboxGroupProps = {
   title?: string;
   infoText?: string;
   checkboxes: CheckboxType[];
-  disableAll: boolean;
+  disableAll?: boolean;
+  hasError?: boolean;
+  errorMessage?: string;
 };
 
 const CheckboxGroup = ({
   title = "",
   infoText = "",
   checkboxes = [],
-  disableAll,
+  disableAll = false,
+  hasError = false,
+  errorMessage = "",
 }: CheckboxGroupProps) => {
   const [checkboxState, setCheckboxState] = useState(checkboxes);
 
@@ -45,6 +51,14 @@ const CheckboxGroup = ({
     <>
       <fieldset>
         {title && <legend>{title}</legend>}
+        {hasError && (
+          <span>
+            <span>
+              <CloseIcon />
+            </span>
+            <span data-testid="error-message">{errorMessage}</span>
+          </span>
+        )}
         {infoText && <span>{infoText}</span>}
         {checkboxState.map((props) => (
           <Checkbox
