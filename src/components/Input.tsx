@@ -18,6 +18,7 @@ const Input = ({
   disabled = false,
   value,
   onChange,
+  ...props
 }: InputProps) => {
   return (
     <div>
@@ -31,6 +32,7 @@ const Input = ({
         aria-disabled={disabled}
         onChange={onChange}
         value={value}
+        {...props}
       />
       {showHelpMessage && <span data-testid="help-message">{helpMessage}</span>}
     </div>
