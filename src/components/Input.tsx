@@ -4,6 +4,7 @@ export interface InputProps extends React.HTMLAttributes<HTMLInputElement> {
   hideLabel?: boolean;
   showHelpMessage?: boolean;
   helpMessage?: string;
+  disabled?: boolean;
 }
 
 const Input = ({
@@ -12,11 +13,19 @@ const Input = ({
   labelText = "",
   showHelpMessage = false,
   helpMessage = "",
+  disabled = false,
 }: InputProps) => {
   return (
     <div>
       {!hideLabel && <label htmlFor={id}>{labelText}</label>}
-      <input type="text" id={id} data-testid={id} name={id} />
+      <input
+        type="text"
+        id={id}
+        data-testid={id}
+        name={id}
+        disabled={disabled}
+        aria-disabled={disabled}
+      />
       {showHelpMessage && <span data-testid="help-message">{helpMessage}</span>}
     </div>
   );
