@@ -23,7 +23,7 @@ const CheckboxGroup = ({
 }: CheckboxGroupProps) => {
   const [checkboxState, setCheckboxState] = useState(checkboxes);
 
-  const updaterFunc = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const updateCheckboxesState = (e: React.ChangeEvent<HTMLInputElement>) => {
     const targetIndex = checkboxState.findIndex(({ id }) => id === e.target.id);
     const updatedData = checkboxState.map((cb, i) => {
       if (i === targetIndex) {
@@ -46,7 +46,11 @@ const CheckboxGroup = ({
         {title && <legend>{title}</legend>}
         {infoText && <span>{infoText}</span>}
         {checkboxState.map((props) => (
-          <Checkbox key={props.id} onChangeCallback={updaterFunc} {...props} />
+          <Checkbox
+            key={props.id}
+            onChangeCallback={updateCheckboxesState}
+            {...props}
+          />
         ))}
       </fieldset>
     </>
