@@ -33,8 +33,11 @@ button[disabled] {
 }
 
 button:disabled:hover,
-button[disabled]:hover {
+button[disabled]:hover,
+button:disabled:active,
+button[disabled]:active {
   border-color: var(--border-color-neutral-light);
+  background-color: var(--background-color-neutral-default-light);
 }
 
 .button__icon-start,
@@ -76,4 +79,5 @@ button:focus-visible {
 
 .tertiary:hover {
   border: 2px solid var(--border-color-app-light);
+  outline: none;
 }
