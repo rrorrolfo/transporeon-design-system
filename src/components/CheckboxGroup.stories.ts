@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { within, fireEvent } from "@storybook/testing-library";
 import { expect } from "@storybook/jest";
-import CheckboxGroup from "./CheckboxGroup";
+
+import CheckboxGroup, { CheckboxGroupProps } from "./CheckboxGroup";
 
 const meta = {
   title: "CheckboxGroup",
@@ -15,22 +16,21 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-const defaultArgs = {
+const defaultArgs: CheckboxGroupProps = {
   title: "Group title",
   infoText: "Information text",
+  disableAll: false,
   checkboxes: [
     {
       id: "1",
       checked: false,
       labelText: "Checkbox 1",
-      disabled: false,
       helperMessage: "Contextual helper message",
     },
     {
       id: "2",
       checked: false,
       labelText: "Checkbox 2",
-      disabled: false,
       helperMessage: "Contextual helper message",
     },
   ],
@@ -67,6 +67,22 @@ export const CheckedGroup: Story = {
       await expect(element).toBeEnabled();
       await fireEvent.click(element);
       await expect(element).toBeChecked();
+    });
+  },
+};
+
+export const AllDisabled: Story = {
+  args: { ...defaultArgs, disableAll: true },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const { checkboxes } = defaultArgs;
+
+    const checkboxesArray = canvas.getAllByRole("checkbox");
+
+    await expect(checkboxesArray.length).toBe(checkboxes.length);
+
+    checkboxesArray.forEach(async (element) => {
+      await expect(element).toBeDisabled();
     });
   },
 };
