@@ -22,6 +22,7 @@ const defaultArgs: InputProps = {
   labelText: "Input",
   showHelpMessage: false,
   helpMessage: "Helpful text for further explaining the Label",
+  disabled: false,
 };
 
 export const Default: Story = {
@@ -35,6 +36,8 @@ export const Default: Story = {
 
     await expect(inputElement).toBeInTheDocument();
     await expect(labelElement).toBeInTheDocument();
+
+    await expect(inputElement).not.toBeDisabled();
 
     fireEvent.change(inputElement, { target: { value: "Input value" } });
 
@@ -52,6 +55,8 @@ export const LabelHidden: Story = {
     const labelElement = canvas.queryByLabelText(labelText as string);
 
     await expect(inputElement).toBeInTheDocument();
+    await expect(inputElement).not.toBeDisabled();
+
     await expect(labelElement).not.toBeInTheDocument();
   },
 };
@@ -67,6 +72,8 @@ export const WithHelpMessage: Story = {
     const messageElement = canvas.getByText(helpMessage as string);
 
     await expect(inputElement).toBeInTheDocument();
+    await expect(inputElement).not.toBeDisabled();
+
     await expect(labelElement).toBeInTheDocument();
     await expect(messageElement).toBeInTheDocument();
   },
@@ -82,6 +89,21 @@ export const InputOnly: Story = {
     const labelElement = canvas.queryByLabelText(labelText as string);
 
     await expect(inputElement).toBeInTheDocument();
+    await expect(inputElement).not.toBeDisabled();
+
     await expect(labelElement).not.toBeInTheDocument();
+  },
+};
+
+export const Disabled: Story = {
+  args: { ...defaultArgs, disabled: true },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const { id } = defaultArgs;
+
+    const inputElement = canvas.getByTestId(id);
+
+    await expect(inputElement).toBeInTheDocument();
+    await expect(inputElement).toBeDisabled();
   },
 };
