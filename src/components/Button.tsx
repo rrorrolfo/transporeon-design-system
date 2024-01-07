@@ -34,9 +34,21 @@ const Button = ({
       onClick={onClick}
       {...props}
     >
-      {iconStart && <span data-testid="button-icon-start">{iconStart}</span>}
-      {showLabel && <span data-testid="button-label">{children}</span>}
-      {iconEnd && <span data-testid="button-icon-end">{iconEnd}</span>}
+      {iconStart && (
+        <span className="button__icon-start" data-testid="button-icon-start">
+          {iconStart}
+        </span>
+      )}
+      {showLabel && (
+        <span className="button__label" data-testid="button-label">
+          {children}
+        </span>
+      )}
+      {iconEnd && (
+        <span className="button__icon-end" data-testid="button-icon-end">
+          {iconEnd}
+        </span>
+      )}
     </button>
   );
 };
