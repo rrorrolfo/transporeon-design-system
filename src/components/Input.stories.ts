@@ -18,16 +18,38 @@ type Story = StoryObj<typeof meta>;
 
 const defaultArgs: InputProps = {
   id: "myInput",
+  hideLabel: false,
+  labelText: "Input",
 };
 
 export const Default: Story = {
   args: defaultArgs,
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
+    const { id, labelText } = defaultArgs;
 
-    const inputElement = canvas.getByTestId("myInput");
+    const inputElement = canvas.getByTestId(id);
+    const labelElement = canvas.getByLabelText(labelText as string);
+
+    await expect(inputElement).toBeInTheDocument();
+    await expect(labelElement).toBeInTheDocument();
+
     fireEvent.change(inputElement, { target: { value: "Input value" } });
 
-    expect(inputElement).toHaveValue("Input value");
+    await expect(inputElement).toHaveValue("Input value");
+  },
+};
+
+export const LabelHidden: Story = {
+  args: { ...defaultArgs, hideLabel: true },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const { id, labelText } = defaultArgs;
+
+    const inputElement = canvas.getByTestId(id);
+    const labelElement = canvas.queryByLabelText(labelText as string);
+
+    await expect(inputElement).toBeInTheDocument();
+    await expect(labelElement).not.toBeInTheDocument();
   },
 };
