@@ -42,10 +42,14 @@ export const Default: Story = {
   args: defaultArgs,
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    const { checkboxes } = defaultArgs;
+    const { checkboxes, infoText, title } = defaultArgs;
 
+    const titleElement = canvas.getByText(title as string);
+    const information = canvas.getByText(infoText as string);
     const checkboxesArray = canvas.getAllByRole("checkbox");
 
+    await expect(titleElement).toBeInTheDocument();
+    await expect(information).toBeInTheDocument();
     await expect(checkboxesArray.length).toBe(checkboxes.length);
 
     checkboxesArray.forEach(async (element) => {
@@ -101,5 +105,18 @@ export const Invalid: Story = {
     await expect(checkboxesArray.length).toBe(checkboxes.length);
     await expect(errorMessage).toBeInTheDocument();
     await expect(errorMessage).toHaveTextContent("Group error text");
+  },
+};
+
+export const Required: Story = {
+  args: { ...defaultArgs, required: true },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const { title } = defaultArgs;
+
+    const titleElement = canvas.getByText(title as string);
+
+    await expect(titleElement).toBeInTheDocument();
+    await expect(titleElement.getAttribute("class")).toMatch(/required/gi);
   },
 };
