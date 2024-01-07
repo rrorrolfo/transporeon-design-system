@@ -1,5 +1,4 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
@@ -104,21 +103,25 @@
   --background-color-app-light: var(--color-neutral-10);
   --background-color-app-dark: var(--color-neutral-90);
 
-  --background-color-accent-light-default: var(--color-blue-50);
-  --background-color-accent-light-hover: var(--color-blue-40);
-  --background-color-accent-light-active: var(--color-blue-60);
+  --background-color-accent-default-light: var(--color-blue-50);
+  --background-color-accent-hover-light: var(--color-blue-40);
+  --background-color-accent-active-light: var(--color-blue-60);
 
-  --background-color-accent-dark-default: var(--color-blue-50);
-  --background-color-accent-dark-hover: var(--color-blue-40);
-  --background-color-accent-dark-active: var(--color-blue-60);
+  --background-color-accent-default-dark: var(--color-blue-50);
+  --background-color-accent-hover-dark: var(--color-blue-40);
+  --background-color-accent-active-dark: var(--color-blue-60);
 
-  --background-color-neutral-light-default: var(--color-neutral-0);
-  --background-color-neutral-light-hover: var(--color-neutral-10);
-  --background-color-neutral-light-active: var(--color-neutral-20);
+  --background-color-neutral-default-light: var(--color-neutral-0);
+  --background-color-neutral-hover-light: var(--color-neutral-10);
+  --background-color-neutral-active-light: var(--color-neutral-20);
 
-  --background-color-neutral-dark-default: var(--color-neutral-80);
-  --background-color-neutral-dark-hover: var(--color-neutral-80);
-  --background-color-neutral-dark-active: var(--color-neutral-70);
+  --background-color-neutral-default-dark: var(--color-neutral-80);
+  --background-color-neutral-hover-dark: var(--color-neutral-80);
+  --background-color-neutral-active-dark: var(--color-neutral-70);
+}
+
+* {
+  font-family: "DM Sans", sans-serif;
 }
 
 a {
