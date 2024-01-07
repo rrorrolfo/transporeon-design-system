@@ -5,6 +5,8 @@ export interface InputProps extends React.HTMLAttributes<HTMLInputElement> {
   showHelpMessage?: boolean;
   helpMessage?: string;
   disabled?: boolean;
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const Input = ({
@@ -14,6 +16,8 @@ const Input = ({
   showHelpMessage = false,
   helpMessage = "",
   disabled = false,
+  value,
+  onChange,
 }: InputProps) => {
   return (
     <div>
@@ -25,6 +29,8 @@ const Input = ({
         name={id}
         disabled={disabled}
         aria-disabled={disabled}
+        onChange={onChange}
+        value={value}
       />
       {showHelpMessage && <span data-testid="help-message">{helpMessage}</span>}
     </div>

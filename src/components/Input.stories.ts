@@ -23,23 +23,26 @@ const defaultArgs: InputProps = {
   showHelpMessage: false,
   helpMessage: "Helpful text for further explaining the Label",
   disabled: false,
+  value: "Input value",
+  onChange: () => {},
 };
 
 export const Default: Story = {
   args: defaultArgs,
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    const { id, labelText } = defaultArgs;
+    const { id, labelText, value } = defaultArgs;
 
     const inputElement = canvas.getByTestId(id);
     const labelElement = canvas.getByLabelText(labelText as string);
 
     await expect(inputElement).toBeInTheDocument();
+    await expect(inputElement).not.toBeDisabled();
+    await expect(inputElement).toHaveValue(value);
+
     await expect(labelElement).toBeInTheDocument();
 
-    await expect(inputElement).not.toBeDisabled();
-
-    fireEvent.change(inputElement, { target: { value: "Input value" } });
+    await fireEvent.change(inputElement, { target: { value: "Input value" } });
 
     await expect(inputElement).toHaveValue("Input value");
   },
