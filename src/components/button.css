@@ -48,3 +48,32 @@ button[disabled]:hover {
   margin: 0 5px;
   vertical-align: top;
 }
+
+button:focus,
+button:focus-visible {
+  outline: none;
+}
+
+.primary:hover {
+  background-color: var(--background-color-accent-hover-light);
+}
+
+.primary:active {
+  background-color: var(--background-color-accent-active-light);
+}
+
+.secondary:hover {
+  border: 2px solid var(--border-color-app-light);
+  background-color: var(--background-color-neutral-hover-light);
+  outline: none;
+}
+
+.secondary:active,
+.tertiary:active {
+  border: 2px solid var(--border-color-app-light);
+  background-color: var(--background-color-neutral-active-light);
+}
+
+.tertiary:hover {
+  border: 2px solid var(--border-color-app-light);
+}
