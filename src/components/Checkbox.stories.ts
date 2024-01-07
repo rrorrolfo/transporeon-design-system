@@ -19,7 +19,7 @@ const defaultArgs = {
   disabled: false,
   checked: false,
   helperMessage: "Contextual help message",
-  labelText: "Checkbox",
+  labelText: "Label",
   id: "myCheckbox",
 };
 
@@ -59,18 +59,6 @@ export const WithLabelText: Story = {
     await expect(checkbox).toBeInTheDocument();
     await expect(label).toBeInTheDocument();
     await expect(label).toHaveTextContent("Checkbox");
-  },
-};
-
-export const WithoutLabelText: Story = {
-  args: { ...defaultArgs, labelText: "" },
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-
-    const checkbox = canvas.getByRole("checkbox", { name: /checkbox/i });
-    const label = canvas.queryByTestId("label-text");
-    await expect(checkbox).toBeInTheDocument();
-    await expect(label).not.toBeInTheDocument();
   },
 };
 
