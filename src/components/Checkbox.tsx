@@ -6,6 +6,7 @@ interface CheckboxProps extends React.HTMLAttributes<HTMLInputElement> {
   helperMessage?: string;
   labelText?: string;
   id: string | undefined;
+  onChangeCallback?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const Checkbox = ({
@@ -14,12 +15,18 @@ const Checkbox = ({
   helperMessage = "",
   labelText = "",
   id,
+  onChangeCallback,
   ...props
 }: CheckboxProps) => {
   const [isChecked, toggleIsChecked] = useState(checked);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) =>
-    toggleIsChecked(e.target.checked);
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (onChangeCallback) {
+      onChangeCallback(e);
+    }
+
+    return toggleIsChecked(e.target.checked);
+  };
 
   return (
     <div>
@@ -37,15 +44,10 @@ const Checkbox = ({
           {...props}
         />
         {labelText && <span data-testid="label-text">{labelText}</span>}
+        {helperMessage && (
+          <span data-testid="helper-message">{helperMessage}</span>
+        )}
       </label>
-      {helperMessage && (
-        <span
-          data-testid="helper-message"
-          onClick={() => toggleIsChecked((prev) => !prev)}
-        >
-          {helperMessage}
-        </span>
-      )}
     </div>
   );
 };
