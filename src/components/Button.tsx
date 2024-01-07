@@ -1,7 +1,7 @@
 import "./button.css";
 import { ButtonTypes, PriorityStyles } from "../types/types";
 
-interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   children?: React.ReactNode;
   priorityStyle?: PriorityStyles;
   type?: ButtonTypes;
@@ -9,6 +9,7 @@ interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   iconStart?: React.ReactElement;
   iconEnd?: React.ReactElement;
   showLabel?: boolean;
+  onClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }
 
 const Button = ({
@@ -19,6 +20,7 @@ const Button = ({
   iconStart,
   iconEnd,
   showLabel = true,
+  onClick,
   ...props
 }: ButtonProps) => {
   const className = `button ${priorityStyle}`;
@@ -29,6 +31,7 @@ const Button = ({
       aria-label="primary-button"
       className={className}
       disabled={disabled}
+      onClick={onClick}
       {...props}
     >
       {iconStart && <span data-testid="button-icon-start">{iconStart}</span>}
