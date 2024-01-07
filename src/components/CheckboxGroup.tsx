@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+import "./checkboxGoup.css";
 import Checkbox from "./Checkbox";
 
 import { CloseIcon } from "../assets";
@@ -18,6 +19,7 @@ export type CheckboxGroupProps = {
   disableAll?: boolean;
   hasError?: boolean;
   errorMessage?: string;
+  required?: boolean;
 };
 
 const CheckboxGroup = ({
@@ -27,6 +29,7 @@ const CheckboxGroup = ({
   disableAll = false,
   hasError = false,
   errorMessage = "",
+  required = false,
 }: CheckboxGroupProps) => {
   const [checkboxState, setCheckboxState] = useState(checkboxes);
 
@@ -50,7 +53,9 @@ const CheckboxGroup = ({
   return (
     <>
       <fieldset>
-        {title && <legend>{title}</legend>}
+        {title && (
+          <legend className={required ? "required" : ""}>{title}</legend>
+        )}
         {hasError && (
           <span>
             <span>
