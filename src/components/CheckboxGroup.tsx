@@ -39,17 +39,15 @@ const CheckboxGroup = ({
         {title && (
           <legend
             className={`checkboxgroup__title ${required ? "required" : ""} ${
-              hasError ? "error-decoration" : ""
+              hasError ? "error-text-color" : ""
             }`}
           >
             {title}
           </legend>
         )}
         {hasError && (
-          <span className="checkboxgroup__error-message error-decoration">
-            <span>
-              <CloseIcon fillColor="#e82d5a" />
-            </span>
+          <span className="checkboxgroup__error-message error-text-color">
+            <CloseIcon fillColor="#e82d5a" />
             <span data-testid="error-message">{errorMessage}</span>
           </span>
         )}

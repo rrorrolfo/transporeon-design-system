@@ -19,10 +19,6 @@
   font-size: var(--font-ui-size-small-regular);
 }
 
-.error-decoration {
-  color: var(--font-color-error-light);
-}
-
 .close-icon {
   margin-right: 5px;
   margin-bottom: -6px;
