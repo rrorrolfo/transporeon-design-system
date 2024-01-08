@@ -1,3 +1,6 @@
+import { CloseIcon } from "../assets";
+import "./input.css";
+
 export interface InputProps extends React.HTMLAttributes<HTMLInputElement> {
   id: string;
   labelText?: string;
@@ -5,6 +8,7 @@ export interface InputProps extends React.HTMLAttributes<HTMLInputElement> {
   showHelpMessage?: boolean;
   helpMessage?: string;
   disabled?: boolean;
+  invalid?: boolean;
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
@@ -18,11 +22,25 @@ const Input = ({
   disabled = false,
   value,
   onChange,
+  invalid,
   ...props
 }: InputProps) => {
   return (
-    <div>
-      {!hideLabel && <label htmlFor={id}>{labelText}</label>}
+    <div
+      className={`input__container pointer-cursor ${
+        disabled ? "disabled" : ""
+      }`}
+    >
+      {!hideLabel && (
+        <label
+          className={`input__label button-gutter pointer-cursor ${
+            invalid ? "error-text-color" : ""
+          } `}
+          htmlFor={id}
+        >
+          {labelText}
+        </label>
+      )}
       <input
         type="text"
         id={id}
@@ -32,9 +50,24 @@ const Input = ({
         aria-disabled={disabled}
         onChange={onChange}
         value={value}
+        className={`input button-gutter pointer-cursor ${
+          invalid ? "error-border" : ""
+        }`}
         {...props}
       />
-      {showHelpMessage && <span data-testid="help-message">{helpMessage}</span>}
+
+      {showHelpMessage ||
+        (invalid && (
+          <span
+            className={`input__help-message button-gutter pointer-cursor ${
+              invalid ? "error-text-color" : ""
+            }`}
+            data-testid="help-message"
+          >
+            {invalid && <CloseIcon fillColor="#e82d5a" />}
+            {helpMessage}
+          </span>
+        ))}
     </div>
   );
 };

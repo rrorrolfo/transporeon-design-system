@@ -1,0 +1,25 @@
+.input {
+  background-color: var(--background-color-neutral-default-light);
+  border: 2px solid var(--border-color-neutral-light);
+  border-radius: 5px;
+  padding: 6px 8px;
+}
+
+.input,
+.input__label,
+.input__help-message {
+  display: block;
+}
+
+.input__label {
+  font-weight: var(--font-weight-heavy);
+  font-size: var(--font-title-size-medium);
+}
+
+.input__help-message {
+  font-size: var(--font-ui-size-small-regular);
+}
+
+.input__container:hover .input {
+  border-color: var(--border-color-accent-light);
+}
