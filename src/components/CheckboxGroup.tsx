@@ -68,7 +68,7 @@ const CheckboxGroup = ({
         {checkboxState.map((props) => (
           <Checkbox
             key={props.id}
-            onChangeCallback={updateCheckboxesState}
+            onChange={updateCheckboxesState}
             disabled={disableAll}
             {...props}
           />
