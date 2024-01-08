@@ -56,18 +56,17 @@ const Input = ({
         {...props}
       />
 
-      {showHelpMessage ||
-        (invalid && (
-          <span
-            className={`input__help-message button-gutter pointer-cursor ${
-              invalid ? "error-text-color" : ""
-            }`}
-            data-testid="help-message"
-          >
-            {invalid && <CloseIcon fillColor="#e82d5a" />}
-            {helpMessage}
-          </span>
-        ))}
+      {(showHelpMessage || invalid) && (
+        <span
+          className={`input__help-message button-gutter pointer-cursor ${
+            invalid ? "error-text-color" : ""
+          }`}
+          data-testid="help-message"
+        >
+          {invalid && <CloseIcon fillColor="#e82d5a" />}
+          {helpMessage}
+        </span>
+      )}
     </div>
   );
 };
