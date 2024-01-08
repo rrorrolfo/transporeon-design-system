@@ -151,7 +151,7 @@ export const WithIconEnd: Story = {
   },
 };
 
-export const IconStartAndHiddenLabel: Story = {
+export const HiddenLabelAndIconStart: Story = {
   args: {
     ...defaultArgs,
     children: "Button with icon",
@@ -169,7 +169,7 @@ export const IconStartAndHiddenLabel: Story = {
   },
 };
 
-export const IconEndAndHiddenLabel: Story = {
+export const HiddenLabelAndIconEnd: Story = {
   args: {
     ...defaultArgs,
     children: "Button with icon",
@@ -187,7 +187,7 @@ export const IconEndAndHiddenLabel: Story = {
   },
 };
 
-export const IconStartAndIconEndAndHiddenLabel: Story = {
+export const HiddenLabelAndIconStartAndIconEnd: Story = {
   args: {
     ...defaultArgs,
     children: "Button with icon",
