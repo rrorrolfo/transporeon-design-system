@@ -18,7 +18,7 @@ type Story = StoryObj<typeof meta>;
 
 const defaultArgs: CheckboxGroupProps = {
   title: "Group title",
-  infoText: "Information text",
+  infoText: "Group information text",
   disableAll: false,
   hasError: false,
   errorMessage: "",
