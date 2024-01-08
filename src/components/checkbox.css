@@ -103,7 +103,3 @@
 .checkbox__wrapper:active input:checked ~ .checkbox__checkmark {
   background-color: var(--background-color-accent-active-light);
 }
-
-.disabled {
-  opacity: 0.6;
-}
