@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 import "./checkbox.css";
 
 interface CheckboxProps extends React.HTMLAttributes<HTMLInputElement> {
@@ -8,7 +6,7 @@ interface CheckboxProps extends React.HTMLAttributes<HTMLInputElement> {
   helperMessage?: string;
   labelText?: string;
   id: string | undefined;
-  onChangeCallback?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const Checkbox = ({
@@ -17,19 +15,9 @@ const Checkbox = ({
   helperMessage = "",
   labelText = "",
   id,
-  onChangeCallback,
+  onChange,
   ...props
 }: CheckboxProps) => {
-  const [isChecked, toggleIsChecked] = useState(checked);
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (onChangeCallback) {
-      onChangeCallback(e);
-    }
-
-    return toggleIsChecked(e.target.checked);
-  };
-
   return (
     <div className="checkbox__wrapper">
       <label
@@ -43,11 +31,11 @@ const Checkbox = ({
           role="checkbox"
           id={id}
           aria-label="checkbox"
-          aria-checked={`${isChecked}`}
+          aria-checked={`${checked}`}
           disabled={disabled}
-          checked={isChecked}
-          onChange={handleChange}
-          className={isChecked ? "checked" : ""}
+          checked={checked}
+          onChange={onChange}
+          className={checked ? "checked" : ""}
           {...props}
         />
         <span className="checkbox__checkmark"></span>

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { within, fireEvent } from "@storybook/testing-library";
+import { within } from "@storybook/testing-library";
 import { expect } from "@storybook/jest";
 import Checkbox from "./Checkbox";
 
@@ -37,14 +37,6 @@ export const Base: Story = {
 
     //default state
     await expect(checkbox).toBeEnabled();
-    await expect(checkbox).not.toBeChecked();
-
-    // Check the checkbox
-    await fireEvent.click(checkbox);
-    await expect(checkbox).toBeChecked();
-
-    // Uncheck the checkbox
-    await fireEvent.click(checkbox);
     await expect(checkbox).not.toBeChecked();
   },
 };
