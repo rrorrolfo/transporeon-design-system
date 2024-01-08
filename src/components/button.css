@@ -1,7 +1,7 @@
 .button {
   border-radius: 8px;
   padding: 8px 10px;
-  height: 32px;
+  height: 35px;
 }
 
 .primary {
@@ -42,8 +42,7 @@ button[disabled]:active {
 
 .button__icon-start,
 .button__icon-end {
-  height: 20px;
-  width: 20px;
+  margin-top: -2px;
   display: inline-block;
 }
 
