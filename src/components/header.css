@@ -1,0 +1,26 @@
+.header__container {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 25px;
+  border-bottom: 2px solid var(--border-color-app-light);
+  border-radius: 10px 10px 0 0;
+  background-color: var(--background-color-neutral-default-light);
+}
+
+.header__container button {
+  margin: auto 0;
+}
+
+.header__logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.header__logo {
+  margin-right: 10px;
+}
+
+.header__company-name {
+  font-size: var(--font-title-size-large);
+  font-weight: var(--font-weight-heavy);
+}
