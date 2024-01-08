@@ -19,7 +19,7 @@ type Story = StoryObj<typeof meta>;
 const defaultArgs: InputProps = {
   id: "myInput",
   hideLabel: false,
-  labelText: "Input",
+  labelText: "Label",
   showHelpMessage: false,
   helpMessage: "Helpful text for further explaining the Label",
   disabled: false,
@@ -49,7 +49,7 @@ export const Default: Story = {
 };
 
 export const LabelHidden: Story = {
-  args: { ...defaultArgs, hideLabel: true },
+  args: { ...defaultArgs, hideLabel: true, showHelpMessage: true },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const { id, labelText } = defaultArgs;
@@ -71,7 +71,7 @@ export const WithHelpMessage: Story = {
     const { id, labelText, helpMessage } = defaultArgs;
 
     const inputElement = canvas.getByTestId(id);
-    const labelElement = canvas.queryByLabelText(labelText as string);
+    const labelElement = canvas.getByLabelText(labelText as string);
     const messageElement = canvas.getByText(helpMessage as string);
 
     await expect(inputElement).toBeInTheDocument();
@@ -98,8 +98,31 @@ export const InputOnly: Story = {
   },
 };
 
+export const Invalid: Story = {
+  args: { ...defaultArgs, invalid: true },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const { id, labelText, helpMessage } = defaultArgs;
+
+    const inputElement = canvas.getByTestId(id);
+    const labelElement = canvas.getByLabelText(labelText as string);
+    const messageElement = canvas.getByText(helpMessage as string);
+
+    await expect(inputElement.getAttribute("class")).toMatch(/error-border/gi);
+    await expect(messageElement.getAttribute("class")).toMatch(
+      /error-text-color/gi
+    );
+
+    await expect(inputElement).toBeInTheDocument();
+    await expect(inputElement).not.toBeDisabled();
+
+    await expect(labelElement).toBeInTheDocument();
+    await expect(messageElement).toBeInTheDocument();
+  },
+};
+
 export const Disabled: Story = {
-  args: { ...defaultArgs, disabled: true },
+  args: { ...defaultArgs, disabled: true, showHelpMessage: true },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const { id } = defaultArgs;
