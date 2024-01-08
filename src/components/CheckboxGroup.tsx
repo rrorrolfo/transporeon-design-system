@@ -1,7 +1,5 @@
-import { useState } from "react";
-
-import "./checkboxGoup.css";
 import Checkbox from "./Checkbox";
+import "./checkboxGoup.css";
 
 import { CloseIcon } from "../assets";
 
@@ -20,6 +18,7 @@ export type CheckboxGroupProps = {
   hasError?: boolean;
   errorMessage?: string;
   required?: boolean;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
 const CheckboxGroup = ({
@@ -30,26 +29,8 @@ const CheckboxGroup = ({
   hasError = false,
   errorMessage = "",
   required = false,
+  onChange,
 }: CheckboxGroupProps) => {
-  const [checkboxState, setCheckboxState] = useState(checkboxes);
-
-  const updateCheckboxesState = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const targetIndex = checkboxState.findIndex(({ id }) => id === e.target.id);
-    const updatedData = checkboxState.map((cb, i) => {
-      if (i === targetIndex) {
-        return {
-          ...cb,
-          checked: e.target.checked,
-          disabled: e.target.disabled,
-        };
-      }
-
-      return cb;
-    });
-
-    return setCheckboxState([...updatedData]);
-  };
-
   return (
     <>
       <fieldset
@@ -75,10 +56,10 @@ const CheckboxGroup = ({
         {infoText && (
           <span className="checkboxgroup__info-text">{infoText}</span>
         )}
-        {checkboxState.map((props) => (
+        {checkboxes.map((props) => (
           <Checkbox
             key={props.id}
-            onChange={updateCheckboxesState}
+            onChange={onChange}
             disabled={disableAll}
             {...props}
           />

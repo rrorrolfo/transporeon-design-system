@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { within, fireEvent } from "@storybook/testing-library";
+import { within } from "@storybook/testing-library";
 import { expect } from "@storybook/jest";
 
 import CheckboxGroup, { CheckboxGroupProps } from "./CheckboxGroup";
@@ -36,6 +36,7 @@ const defaultArgs: CheckboxGroupProps = {
       helperMessage: "Contextual helper message",
     },
   ],
+  onChange: () => {},
 };
 
 export const Default: Story = {
@@ -60,7 +61,23 @@ export const Default: Story = {
 };
 
 export const CheckedGroup: Story = {
-  args: defaultArgs,
+  args: {
+    ...defaultArgs,
+    checkboxes: [
+      {
+        id: "1",
+        checked: true,
+        labelText: "Checkbox 1",
+        helperMessage: "Contextual helper message",
+      },
+      {
+        id: "2",
+        checked: true,
+        labelText: "Checkbox 2",
+        helperMessage: "Contextual helper message",
+      },
+    ],
+  },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const { checkboxes } = defaultArgs;
@@ -71,7 +88,6 @@ export const CheckedGroup: Story = {
 
     checkboxesArray.forEach(async (element) => {
       await expect(element).toBeEnabled();
-      await fireEvent.click(element);
       await expect(element).toBeChecked();
     });
   },
