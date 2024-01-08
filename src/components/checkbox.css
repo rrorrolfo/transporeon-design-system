@@ -1,0 +1,109 @@
+.checkbox__wrapper {
+  cursor: pointer;
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.checkbox__wrapper input {
+  position: absolute;
+  opacity: 0;
+  height: 0;
+  width: 0;
+}
+
+.checkbox__checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 18px;
+  width: 18px;
+  background-color: var(--background-color-neutral-default-light);
+  border: 2px solid var(--border-color-neutral-light);
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.checkbox__wrapper input:checked ~ .checkbox__checkmark {
+  background-color: var(--background-color-accent-default-light);
+  border: 2px solid var(--border-color-accent-light);
+}
+
+.checkbox__checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.checkbox__wrapper input:checked ~ .checkbox__checkmark:after {
+  display: block;
+}
+
+.checkbox__wrapper .checkbox__checkmark:after {
+  left: 7px;
+  top: 3px;
+  width: 3px;
+  height: 7px;
+  border: solid var(--border-color-app-light);
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.checkbox__label {
+  display: flex;
+  cursor: pointer;
+}
+
+.checkbox__content-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.checkbox__label-text,
+.checkbox__helper-message {
+  flex-basis: 100%;
+}
+
+.checkbox__label-text {
+  font-weight: var(--font-weight-heavy);
+  font-size: var(--font-title-size-medium);
+}
+
+.checkbox__helper-message {
+  font-size: var(--font-ui-size-small-regular);
+}
+
+.checkbox__wrapper:hover input ~ .checkbox__checkmark {
+  border-color: var(--border-color-accent-light);
+}
+
+.checkbox__wrapper:active input ~ .checkbox__checkmark {
+  border: 2px solid var(--border-color-accent-light);
+  background-color: var(--background-color-neutral-active-light);
+}
+
+.checkbox__wrapper input[type="checkbox"]:disabled {
+  border: 2px solid var(--border-color-neutral-light);
+  background-color: var(--background-color-neutral-default-light);
+  color: var(--font-color-secondary-light);
+  opacity: 0.6;
+}
+
+.checkbox__wrapper:hover input:checked ~ .checkbox__checkmark {
+  background-color: var(--background-color-accent-hover-light);
+}
+
+.checkbox__wrapper:active input:checked ~ .checkbox__checkmark {
+  background-color: var(--background-color-accent-active-light);
+}
+
+.disabled {
+  opacity: 0.6;
+}
