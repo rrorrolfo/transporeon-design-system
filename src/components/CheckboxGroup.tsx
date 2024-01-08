@@ -52,19 +52,29 @@ const CheckboxGroup = ({
 
   return (
     <>
-      <fieldset>
+      <fieldset
+        className={`checkboxgroup__container ${disableAll ? "disabled" : ""}`}
+      >
         {title && (
-          <legend className={required ? "required" : ""}>{title}</legend>
+          <legend
+            className={`checkboxgroup__title ${required ? "required" : ""} ${
+              hasError ? "error-decoration" : ""
+            }`}
+          >
+            {title}
+          </legend>
         )}
         {hasError && (
-          <span>
+          <span className="checkboxgroup__error-message error-decoration">
             <span>
-              <CloseIcon />
+              <CloseIcon fillColor="#e82d5a" />
             </span>
             <span data-testid="error-message">{errorMessage}</span>
           </span>
         )}
-        {infoText && <span>{infoText}</span>}
+        {infoText && (
+          <span className="checkboxgroup__info-text">{infoText}</span>
+        )}
         {checkboxState.map((props) => (
           <Checkbox
             key={props.id}
