@@ -11,10 +11,12 @@ const Header = () => {
         </span>
         <span className="header__company-name">Componento</span>
       </div>
-      <Button priorityStyle="secondary" iconEnd={<DarkModeIcon />}>
-        {" "}
-        Dark{" "}
-      </Button>
+      <div className="header__theme-button">
+        <Button priorityStyle="secondary" iconEnd={<DarkModeIcon />}>
+          {" "}
+          Dark{" "}
+        </Button>
+      </div>
     </div>
   );
 };
