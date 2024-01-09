@@ -10,6 +10,7 @@ export interface InputProps extends React.HTMLAttributes<HTMLInputElement> {
   disabled?: boolean;
   invalid?: boolean;
   value: string;
+  type?: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
@@ -23,6 +24,7 @@ const Input = ({
   value,
   onChange,
   invalid,
+  type = "text",
   ...props
 }: InputProps) => {
   return (
@@ -42,7 +44,7 @@ const Input = ({
         </label>
       )}
       <input
-        type="text"
+        type={type}
         id={id}
         data-testid={id}
         name={id}
