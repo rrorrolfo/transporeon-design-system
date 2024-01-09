@@ -3,7 +3,7 @@ import "./checkboxGoup.css";
 
 import { CloseIcon } from "../assets";
 
-type CheckboxType = {
+export type CheckboxType = {
   checked: boolean;
   helperMessage?: string;
   labelText?: string;
