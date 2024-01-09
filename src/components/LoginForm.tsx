@@ -1,9 +1,45 @@
+import { useState } from "react";
+
 import Input from "./Input";
 import "./loginForm.css";
-import CheckboxGroup from "./CheckboxGroup";
+import CheckboxGroup, { CheckboxType } from "./CheckboxGroup";
 import Button from "./Button";
 
 const LoginForm = () => {
+  const [email, setEmail] = useState("aleksander@skafander.c-");
+  const [password, setPassword] = useState("password");
+  const [checkboxState, setCheckboxState] = useState<CheckboxType[]>([
+    {
+      id: "1",
+      checked: false,
+      labelText: "Send me useless newsletter please",
+      helperMessage: "Our marketers will thank you, every day",
+    },
+    {
+      id: "2",
+      checked: false,
+      labelText: "I agree with terms and conditions",
+      helperMessage: "Contextual help message",
+    },
+  ]);
+
+  const updateCheckboxesState = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const targetIndex = checkboxState.findIndex(({ id }) => id === e.target.id);
+    const updatedData = checkboxState.map((cb, i) => {
+      if (i === targetIndex) {
+        return {
+          ...cb,
+          checked: e.target.checked,
+          disabled: e.target.disabled,
+        };
+      }
+
+      return cb;
+    });
+
+    return setCheckboxState([...updatedData]);
+  };
+
   return (
     <div className="form__container">
       <div className="form__title">
@@ -15,37 +51,33 @@ const LoginForm = () => {
           <Input
             labelText="Email"
             id="email"
-            value="testgmail.com"
-            onChange={() => {}}
+            value={email}
+            onChange={(e) => {
+              setEmail(e.target.value);
+            }}
             invalid
             helpMessage="Top-level domain is either missing or incorrect"
+            type="email"
           />
           <Input
             labelText="Password"
+            type="password"
             id="password"
-            value="testgmail.com"
-            onChange={() => {}}
+            value={password}
+            onChange={(e) => {
+              setPassword(e.target.value);
+            }}
+            showHelpMessage
             helpMessage="Create a strong password with a mix of letters, number and symbols"
           />
         </div>
 
         <div className="form__checkboxGroup-container">
           <CheckboxGroup
-            checkboxes={[
-              {
-                id: "1",
-                checked: false,
-                labelText: "Send me useless newsletter please",
-                helperMessage: "Our marketers will thank you, every day",
-              },
-              {
-                id: "2",
-                checked: false,
-                labelText: "I agree with terms and conditions",
-                helperMessage: "Contextual help message",
-              },
-            ]}
-            onChange={() => {}}
+            checkboxes={checkboxState}
+            onChange={(e) => {
+              updateCheckboxesState(e);
+            }}
             title="Additional"
             hasError
             errorMessage="You need to agree with terms and conditions"
