@@ -1,20 +1,27 @@
 import { createContext, useState } from "react";
+import { useThemeDetector } from "./hooks";
+import { ThemeOptions } from "../types/types";
 
 type ThemeContextProviderProps = {
   children: React.ReactNode;
 };
 
-type ThemeOptions = "light" | "dark";
-
 type ContextValues = {
   theme: ThemeOptions;
-  setTheme: React.Dispatch<React.SetStateAction<ThemeOptions>>;
+  setTheme?: React.Dispatch<React.SetStateAction<ThemeOptions>>;
 };
 
-export const ThemeContext = createContext<ContextValues | null>(null);
+const getCurrentTheme = () =>
+  window.matchMedia("(prefers-color-scheme: dark)").matches;
+const isDarkTheme = getCurrentTheme();
+
+export const ThemeContext = createContext<ContextValues>({
+  theme: isDarkTheme ? "dark" : "light",
+});
 
 const ThemeContextProvider = ({ children }: ThemeContextProviderProps) => {
-  const [theme, setTheme] = useState<ThemeOptions>("light");
+  const currentTheme = useThemeDetector();
+  const [theme, setTheme] = useState<ThemeOptions>(currentTheme);
   return (
     <ThemeContext.Provider value={{ theme, setTheme }}>
       {children}
