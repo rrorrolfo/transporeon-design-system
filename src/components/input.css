@@ -3,6 +3,7 @@
   border: 2px solid var(--border-color-neutral-light);
   border-radius: 5px;
   padding: 6px 8px;
+  width: 95%;
 }
 
 .input,
