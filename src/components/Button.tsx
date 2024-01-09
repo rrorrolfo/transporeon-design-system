@@ -1,5 +1,6 @@
 import "./button.css";
 import { ButtonTypes, PriorityStyles } from "../types/types";
+import { useThemeContext } from "../context/hooks";
 
 export interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   children?: React.ReactNode;
@@ -23,7 +24,10 @@ const Button = ({
   onClick,
   ...props
 }: ButtonProps) => {
-  const className = `button ${priorityStyle}`;
+  const { theme } = useThemeContext();
+
+  const className = `button ${priorityStyle} ${theme}`;
+
   return (
     <button
       role="button"
