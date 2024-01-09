@@ -1,6 +1,7 @@
 .checkboxgroup__container {
   border: none;
   padding-block-start: 0;
+  padding-inline-start: 0;
 }
 
 .checkboxgroup__title {
@@ -17,11 +18,6 @@
 
 .checkboxgroup__error-message {
   font-size: var(--font-ui-size-small-regular);
-}
-
-.close-icon {
-  margin-right: 5px;
-  margin-bottom: -6px;
 }
 
 .required:after {
