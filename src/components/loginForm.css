@@ -20,6 +20,7 @@
 
 .form__title h1 {
   font-size: var(--font-display-size-medium);
+  margin-bottom: 8px;
 }
 
 .form__title p {
