@@ -8,7 +8,7 @@ type ThemeContextProviderProps = {
 
 type ContextValues = {
   theme: ThemeOptions;
-  setTheme?: React.Dispatch<React.SetStateAction<ThemeOptions>>;
+  setTheme: React.Dispatch<React.SetStateAction<ThemeOptions>>;
 };
 
 const getCurrentTheme = () =>
@@ -17,6 +17,7 @@ const isDarkTheme = getCurrentTheme();
 
 export const ThemeContext = createContext<ContextValues>({
   theme: isDarkTheme ? "dark" : "light",
+  setTheme: () => {},
 });
 
 const ThemeContextProvider = ({ children }: ThemeContextProviderProps) => {
