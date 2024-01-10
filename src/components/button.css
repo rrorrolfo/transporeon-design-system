@@ -124,7 +124,7 @@ button:focus-visible {
 }
 
 .secondary.dark:hover {
-  border: 2px solid var(--border-color-app-dark);
+  border: 2px solid var(--border-color-neutral-dark);
   background-color: var(--background-color-neutral-hover-dark);
   outline: none;
 }
