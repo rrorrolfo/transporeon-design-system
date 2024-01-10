@@ -1,0 +1,48 @@
+import { Meta, Typeset } from "@storybook/addon-docs/blocks";
+
+<Meta title="Style Guide/Typography" />
+
+export const typography = {
+  type: {
+    primary: '"DM Sans", sans-serif',
+  },
+  weight: {
+    thin: "100",
+    light: "200",
+    normal: "300",
+    medium: "400",
+    semibold: "500",
+    bold: "600",
+    heavy: "700",
+  },
+  size: {
+    size10: 10,
+    size12: 12,
+    size14: 14,
+    size16: 16,
+    size18: 18,
+    size24: 24,
+    size32: 32,
+    size64: 64,
+  },
+};
+
+export const SampleText = "Typography tokens";
+
+# Typography
+
+<Typeset
+  fontSizes={[
+    Number(typography.size.size10),
+    Number(typography.size.size12),
+    Number(typography.size.size14),
+    Number(typography.size.size16),
+    Number(typography.size.size18),
+    Number(typography.size.size24),
+    Number(typography.size.size32),
+    Number(typography.size.size64),
+  ]}
+  fontWeight={typography.weight.medium}
+  sampleText={SampleText}
+  fontFamily={typography.type.primary}
+/>
