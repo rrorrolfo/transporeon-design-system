@@ -1,4 +1,5 @@
 import { CloseIcon } from "../assets";
+import { useThemeContext } from "../context/hooks";
 import "./input.css";
 
 export interface InputProps extends React.HTMLAttributes<HTMLInputElement> {
@@ -27,6 +28,7 @@ const Input = ({
   type = "text",
   ...props
 }: InputProps) => {
+  const { theme } = useThemeContext();
   return (
     <div
       className={`input__container pointer-cursor ${
@@ -52,7 +54,7 @@ const Input = ({
         aria-disabled={disabled}
         onChange={onChange}
         value={value}
-        className={`input button-gutter pointer-cursor ${
+        className={`input ${theme} button-gutter pointer-cursor ${
           invalid ? "error-border" : ""
         }`}
         {...props}

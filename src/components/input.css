@@ -5,6 +5,14 @@
   padding: 6px 8px;
   width: 95%;
 }
+.input.light {
+  background-color: var(--background-color-neutral-default-light);
+  border: 2px solid var(--border-color-neutral-light);
+}
+.input.dark {
+  background-color: var(--background-color-neutral-default-dark);
+  border: 2px solid var(--border-color-neutral-dark);
+}
 
 .input,
 .input__label,
