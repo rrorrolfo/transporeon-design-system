@@ -27,6 +27,11 @@
 .header__company-name {
   font-size: var(--font-title-size-large);
   font-weight: var(--font-weight-heavy);
+  color: var(--font-color-primary-light);
+}
+
+.header__company-name.dark {
+  color: var(--font-color-primary-dark);
 }
 
 .header__theme-button {
