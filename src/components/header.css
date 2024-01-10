@@ -4,7 +4,14 @@
   padding: 8px 25px;
   border-bottom: 2px solid var(--border-color-app-light);
   border-radius: 10px 10px 0 0;
+}
+
+.header__container.light {
   background-color: var(--background-color-neutral-default-light);
+}
+
+.header__container.dark {
+  background-color: var(--background-color-neutral-default-dark);
 }
 
 .header__logo-container {
