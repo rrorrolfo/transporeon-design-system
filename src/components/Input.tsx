@@ -37,8 +37,8 @@ const Input = ({
     >
       {!hideLabel && (
         <label
-          className={`input__label ${theme} button-gutter pointer-cursor ${
-            invalid ? "error-text-color" : ""
+          className={`input__label button-gutter pointer-cursor ${
+            invalid ? "error-text-color" : theme
           } `}
           htmlFor={id}
         >
@@ -63,8 +63,8 @@ const Input = ({
       {(showHelpMessage || invalid) && (
         <span
           className={`input__help-message ${
-            invalid ? "" : theme
-          } button-gutter pointer-cursor ${invalid ? "error-text-color" : ""}`}
+            invalid ? "error-text-color" : theme
+          } button-gutter pointer-cursor`}
           data-testid="help-message"
         >
           {invalid && <CloseIcon fillColor="#e82d5a" />}
