@@ -14,6 +14,12 @@
 }
 
 .login-form__container {
-  background-color: var(--background-color-app-light);
   padding: 25px 0 35px;
+}
+
+.login-form__container.light {
+  background-color: var(--background-color-app-light);
+}
+.login-form__container.dark {
+  background-color: var(--background-color-app-dark);
 }
