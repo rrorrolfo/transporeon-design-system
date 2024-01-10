@@ -2,15 +2,16 @@
   display: flex;
   justify-content: space-between;
   padding: 8px 25px;
-  border-bottom: 2px solid var(--border-color-app-light);
   border-radius: 10px 10px 0 0;
 }
 
 .header__container.light {
+  border-bottom: 1.5px solid var(--border-color-app-light);
   background-color: var(--background-color-neutral-default-light);
 }
 
 .header__container.dark {
+  border-bottom: 1.5px solid var(--border-color-app-dark);
   background-color: var(--background-color-neutral-default-dark);
 }
 
