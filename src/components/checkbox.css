@@ -67,6 +67,7 @@
 .checkbox__label {
   display: flex;
   cursor: pointer;
+  color: var(--font-color-primary-light);
 }
 
 .checkbox__content-container {
@@ -82,10 +83,18 @@
 .checkbox__label-text {
   font-weight: var(--font-weight-heavy);
   font-size: var(--font-title-size-medium);
+  color: var(--font-color-primary-light);
+}
+
+.checkbox__label-text.dark,
+.checkbox__helper-message.dark,
+.checkbox__label {
+  color: var(--font-color-primary-dark);
 }
 
 .checkbox__helper-message {
   font-size: var(--font-ui-size-small-regular);
+  color: var(--font-color-primary-light);
 }
 
 .checkbox__wrapper:hover input ~ .checkbox__checkmark {

@@ -24,7 +24,7 @@ const Checkbox = ({
   return (
     <div className="checkbox__wrapper">
       <label
-        className={`checkbox__label ${disabled ? "disabled" : ""}`}
+        className={`checkbox__label ${theme} ${disabled ? "disabled" : ""}`}
         htmlFor={id}
         data-testid="checkbox-label"
       >
@@ -44,13 +44,16 @@ const Checkbox = ({
         <span className={`checkbox__checkmark ${theme}`}></span>
         <div className="checkbox__content-container">
           {labelText && (
-            <span className="checkbox__label-text" data-testid="label-text">
+            <span
+              className={`checkbox__label-text ${theme}`}
+              data-testid="label-text"
+            >
               {labelText}
             </span>
           )}
           {helperMessage && (
             <span
-              className="checkbox__helper-message"
+              className={`checkbox__helper-message ${theme}`}
               data-testid="helper-message"
             >
               {helperMessage}
