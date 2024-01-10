@@ -12,14 +12,3 @@
   width: 90%;
   margin: 0 auto;
 }
-
-.login-form__container {
-  padding: 18px 0 35px;
-}
-
-.login-form__container.light {
-  background-color: var(--background-color-app-light);
-}
-.login-form__container.dark {
-  background-color: var(--background-color-app-dark);
-}
