@@ -145,7 +145,7 @@ h1 {
 }
 
 .error-text-color {
-  color: var(--font-color-error-light);
+  color: var(--font-color-error-light) !important;
 }
 
 .error-border {
