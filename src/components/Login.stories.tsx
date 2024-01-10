@@ -5,6 +5,14 @@ import App from "../App";
 const meta = {
   title: "Login",
   component: App,
+  parameters: {
+    docs: {
+      description: {
+        component:
+          "Login form created with the components from this design system.",
+      },
+    },
+  },
   tags: ["autodocs"],
 } satisfies Meta<typeof App>;
 

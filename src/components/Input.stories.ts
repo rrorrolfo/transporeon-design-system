@@ -9,6 +9,12 @@ const meta = {
   component: Input,
   parameters: {
     layout: "centered",
+    docs: {
+      description: {
+        component:
+          "The Input component includes a label, input, and help text.",
+      },
+    },
   },
   tags: ["autodocs"],
 } satisfies Meta<typeof Input>;

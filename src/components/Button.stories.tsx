@@ -13,6 +13,12 @@ const meta = {
   component: Button,
   parameters: {
     layout: "centered",
+    docs: {
+      description: {
+        component:
+          "Basic button that allow users to take actions with a single tap. It comes in three variations: primary, secondary, and tertiary.",
+      },
+    },
   },
   tags: ["autodocs"],
 } satisfies Meta<typeof Button>;

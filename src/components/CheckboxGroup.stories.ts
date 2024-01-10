@@ -9,6 +9,12 @@ const meta = {
   component: CheckboxGroup,
   parameters: {
     layout: "centered",
+    docs: {
+      description: {
+        component:
+          "Checkbox group is a helpful wrapper component used to group Checkbox components. It allows the user to select options from a set",
+      },
+    },
   },
   tags: ["autodocs"],
 } satisfies Meta<typeof CheckboxGroup>;
