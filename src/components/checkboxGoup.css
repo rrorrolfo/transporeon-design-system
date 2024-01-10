@@ -8,10 +8,17 @@
   font-weight: var(--font-weight-heavy);
   font-size: var(--font-title-size-medium);
   padding-inline-start: 0;
+  color: var(--font-color-primary-light);
+}
+
+.checkboxgroup__title.dark,
+.checkboxgroup__info-text.dark {
+  color: var(--font-color-primary-dark);
 }
 
 .checkboxgroup__info-text {
   font-size: var(--font-ui-size-small-regular);
+  color: var(--font-color-primary-light);
   margin-bottom: 16px;
   display: block;
 }

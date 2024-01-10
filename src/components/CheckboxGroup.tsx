@@ -2,6 +2,7 @@ import Checkbox from "./Checkbox";
 import "./checkboxGoup.css";
 
 import { CloseIcon } from "../assets";
+import { useThemeContext } from "../context/hooks";
 
 export type CheckboxType = {
   checked: boolean;
@@ -31,6 +32,7 @@ const CheckboxGroup = ({
   required = false,
   onChange,
 }: CheckboxGroupProps) => {
+  const { theme } = useThemeContext();
   return (
     <>
       <fieldset
@@ -38,9 +40,9 @@ const CheckboxGroup = ({
       >
         {title && (
           <legend
-            className={`checkboxgroup__title ${required ? "required" : ""} ${
-              hasError ? "error-text-color" : ""
-            }`}
+            className={`checkboxgroup__title ${hasError ? "" : theme} ${
+              required ? "required" : ""
+            } ${hasError ? "error-text-color" : ""}`}
           >
             {title}
           </legend>
@@ -52,7 +54,9 @@ const CheckboxGroup = ({
           </span>
         )}
         {infoText && (
-          <span className="checkboxgroup__info-text">{infoText}</span>
+          <span className={`checkboxgroup__info-text ${theme}`}>
+            {infoText}
+          </span>
         )}
         {checkboxes.map((props) => (
           <Checkbox
