@@ -136,6 +136,6 @@ button:focus-visible {
 }
 
 .tertiary.dark:hover {
-  border: 2px solid red;
+  border: 2px solid var(--border-color-app-dark);
   outline: none;
 }
