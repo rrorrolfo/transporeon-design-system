@@ -4,8 +4,10 @@ import Input from "./Input";
 import "./loginForm.css";
 import CheckboxGroup, { CheckboxType } from "./CheckboxGroup";
 import Button from "./Button";
+import { useThemeContext } from "../context/hooks";
 
 const LoginForm = () => {
+  const { theme } = useThemeContext();
   const [email, setEmail] = useState("aleksander@skafander.c-");
   const [password, setPassword] = useState("password");
   const [checkboxState, setCheckboxState] = useState<CheckboxType[]>([
@@ -41,7 +43,7 @@ const LoginForm = () => {
   };
 
   return (
-    <div className="form__container">
+    <div className={`form__container ${theme}`}>
       <div className="form__title">
         <h1>Welcome to Componento!</h1>
         <p>Give us your credentials and we shall let you pass.</p>

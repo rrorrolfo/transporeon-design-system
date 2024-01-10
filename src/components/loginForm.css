@@ -5,8 +5,16 @@
   min-width: 350px;
   padding: 20px 25px;
   border-radius: 10px;
+}
+
+.form__container.light {
   background-color: var(--background-color-neutral-default-light);
   box-shadow: 0px 10px 10px 5px rgba(192, 192, 192, 0.297);
+}
+
+.form__container.dark {
+  background-color: var(--background-color-neutral-default-dark);
+  box-shadow: 0;
 }
 
 .form__title,
