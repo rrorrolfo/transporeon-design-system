@@ -22,6 +22,14 @@
   margin-bottom: 30px;
 }
 
+.form__title.light {
+  color: var(--font-color-primary-light);
+}
+
+.form__title.dark {
+  color: var(--font-color-primary-dark);
+}
+
 .form__checkboxGroup-container {
   margin-bottom: 20px;
 }
@@ -40,4 +48,21 @@
   text-align: center;
   margin: 8px 0;
   font-size: var(--font-ui-size-small-regular);
+}
+
+.form__or-text.light {
+  color: var(--font-color-primary-light);
+}
+
+.form__or-text.dark {
+  color: var(--font-color-primary-dark);
+}
+
+.login-form__container {
+  padding: 18px 0 35px;
+  background-color: var(--background-color-app-light);
+}
+
+.login-form__container.dark {
+  background-color: var(--background-color-app-dark);
 }

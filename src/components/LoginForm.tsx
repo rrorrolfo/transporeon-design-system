@@ -43,53 +43,55 @@ const LoginForm = () => {
   };
 
   return (
-    <div className={`form__container ${theme}`}>
-      <div className="form__title">
-        <h1>Welcome to Componento!</h1>
-        <p>Give us your credentials and we shall let you pass.</p>
-      </div>
-      <form>
-        <div className="form__inputs-container">
-          <Input
-            labelText="Email"
-            id="email"
-            value={email}
-            onChange={(e) => {
-              setEmail(e.target.value);
-            }}
-            invalid
-            helpMessage="Top-level domain is either missing or incorrect"
-            type="email"
-          />
-          <Input
-            labelText="Password"
-            type="password"
-            id="password"
-            value={password}
-            onChange={(e) => {
-              setPassword(e.target.value);
-            }}
-            showHelpMessage
-            helpMessage="Create a strong password with a mix of letters, number and symbols"
-          />
+    <div className={`login-form__container ${theme}`}>
+      <div className={`form__container ${theme}`}>
+        <div className={`form__title ${theme}`}>
+          <h1>Welcome to Componento!</h1>
+          <p>Give us your credentials and we shall let you pass.</p>
         </div>
+        <form>
+          <div className="form__inputs-container">
+            <Input
+              labelText="Email"
+              id="email"
+              value={email}
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
+              invalid
+              helpMessage="Top-level domain is either missing or incorrect"
+              type="email"
+            />
+            <Input
+              labelText="Password"
+              type="password"
+              id="password"
+              value={password}
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
+              showHelpMessage
+              helpMessage="Create a strong password with a mix of letters, number and symbols"
+            />
+          </div>
 
-        <div className="form__checkboxGroup-container">
-          <CheckboxGroup
-            checkboxes={checkboxState}
-            onChange={(e) => {
-              updateCheckboxesState(e);
-            }}
-            title="Additional"
-            hasError
-            errorMessage="You need to agree with terms and conditions"
-            infoText="Group information text"
-          />
-        </div>
-        <Button priorityStyle="primary">Sign in</Button>
-        <span className="form__or-text">or</span>
-        <Button priorityStyle="tertiary">Create account</Button>
-      </form>
+          <div className="form__checkboxGroup-container">
+            <CheckboxGroup
+              checkboxes={checkboxState}
+              onChange={(e) => {
+                updateCheckboxesState(e);
+              }}
+              title="Additional"
+              hasError
+              errorMessage="You need to agree with terms and conditions"
+              infoText="Group information text"
+            />
+          </div>
+          <Button priorityStyle="primary">Sign in</Button>
+          <span className={`form__or-text ${theme}`}>or</span>
+          <Button priorityStyle="tertiary">Create account</Button>
+        </form>
+      </div>
     </div>
   );
 };
