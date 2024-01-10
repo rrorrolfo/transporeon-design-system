@@ -9,12 +9,13 @@
 .primary.light {
   background-color: var(--background-color-accent-default-light);
   color: var(--font-color-inverse-light);
+  border: 2px solid var(--border-color-accent-light);
 }
 
 .secondary.light {
   background-color: var(--background-color-neutral-default-light);
   color: var(--font-color-secondary-light);
-  border: 2px solid var(--border-color-app-light);
+  border: 2px solid var(--border-color-neutral-light);
 }
 
 .tertiary.light {
@@ -26,12 +27,13 @@
 .primary.dark {
   background-color: var(--background-color-accent-default-dark);
   color: var(--font-color-inverse-dark);
+  border: none;
 }
 
 .secondary.dark {
   background-color: var(--background-color-neutral-default-dark);
   color: var(--font-color-secondary-dark);
-  border: 2px solid var(--border-color-app-dark);
+  border: 2px solid var(--border-color-neutral-dark);
 }
 
 .tertiary.dark {
