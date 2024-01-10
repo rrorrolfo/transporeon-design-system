@@ -1,3 +1,4 @@
+import { useThemeContext } from "../context/hooks";
 import "./checkbox.css";
 
 interface CheckboxProps extends React.HTMLAttributes<HTMLInputElement> {
@@ -18,6 +19,8 @@ const Checkbox = ({
   onChange,
   ...props
 }: CheckboxProps) => {
+  const { theme } = useThemeContext();
+
   return (
     <div className="checkbox__wrapper">
       <label
@@ -38,7 +41,7 @@ const Checkbox = ({
           className={checked ? "checked" : ""}
           {...props}
         />
-        <span className="checkbox__checkmark"></span>
+        <span className={`checkbox__checkmark ${theme}`}></span>
         <div className="checkbox__content-container">
           {labelText && (
             <span className="checkbox__label-text" data-testid="label-text">
